@@ -20,7 +20,7 @@
 - [12/2/2024] SeqAfford has been released on Arxiv now!!!
 
 ## 😲 Results
-Please refer to our [homepage](https://aim-uofa.github.io/MovieDreamer/) for more thrilling results!
+Please refer to our [homepage](https://seq-afford.github.io)) for more thrilling results!
 
 
 ## 🛠️ Setup
