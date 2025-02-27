@@ -1,6 +1,27 @@
+<br>
+<p align="center">
+<h1 align="center"><strong>## SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Model
+</strong></h1>
+  <p align="center">
+  	<strong>CVPR 2025</strong>
+	<br>
+   Chunlin Yu*</a>&emsp;
+    <a href='https://hq-King.github.io' target='_blank'>Hanqing Wang*</a>&emsp;
+   Ye Shi</a>&emsp;
+   Haoyang Luo</a>&emsp;
+	Sibei Yang</a>&emsp;
+   Jingyi Yu</a>&emsp;
+   Jingya Wang</a>&emsp;
+    <br>
+    ShanghaiTech University    
+    <br>
+    *Indicates Equal Contribution
+    <br>
+  </p>
+</p>
+
 
   
-## SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Model
 
 <p align="center">
   <a href="https://seq-afford.github.io"><b>📖 Project Page</b></a> |
