@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-<h1 align="center"><strong>## SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Model
+<h1 align="center"><strong>SeqAfford: Sequential 3D Affordance Reasoning via Multimodal Large Language Model
 </strong></h1>
   <p align="center">
   	<strong>CVPR 2025</strong>
