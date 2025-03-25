@@ -57,6 +57,8 @@ Please refer to our [homepage](https://seq-afford.github.io) for more thrilling 
 ```bash
   sh ./scripts/finetune_lora.sh
 ```
+# 📚 Data
+visit the link to download the [Dataset](https://pan.baidu.com/s/1_koVmNMdv5BByli97eDHGA?pwd=2025)
 
 ## 🚩 Plan
 - [x] Paper Released.
