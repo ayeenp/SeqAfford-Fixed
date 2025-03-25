@@ -44,8 +44,10 @@ Please refer to our [homepage](https://seq-afford.github.io) for more thrilling 
 
 
 ## 🛠️ Setup
-- Comming Soon...
-
+- 1. Create a new `conda` environment and activate it by following command
+  ```bash
+  conda env create -f environment.yml
+  ```
 
 ## 🚩 Plan
 - [x] Paper Released.
