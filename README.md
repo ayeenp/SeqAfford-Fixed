@@ -46,13 +46,22 @@ Please refer to our [homepage](https://seq-afford.github.io) for more thrilling 
 ## 🛠️ Setup
 - 1. Create a new `conda` environment and activate it by following command
   ```bash
-  conda env create -f environment.yml
+  conda env create -f environment.yaml
   ```
+- 2. Down [ShapeLLM](https://github.com/qizekun/ShapeLLM/blob/main/docs/MODEL_ZOO.md) model weight into your directory, and Modify the model path in the `scripts/finetune_lora.sh`， including both `--vision_tower_path` and `--pretrain_mm_mlp_adapter`
+ 
+ - 3. Down [Uni3D](https://github.com/baaivision/Uni3D) model weight into your directory, and Modify the model path in the `./llava/model/language_model/affordancellm.py`
+ 
+- 4. you can train your own model by running the following code
+ 
+```bash
+  sh ./scripts/finetune_lora.sh
+```
 
 ## 🚩 Plan
 - [x] Paper Released.
-- [ ] Source Code and Pretrained Weights.
-- [ ] Dataset.
+- [√ ] Source Code and Pretrained Weights.
+- [√ ] Dataset.
 <!-- --- -->
 
 
