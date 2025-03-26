@@ -66,6 +66,8 @@ visit the link to download the [Dataset](https://pan.baidu.com/s/1_koVmNMdv5BByl
 - [√ ] Dataset.
 <!-- --- -->
 
+## Acknowledgement
+Thanks for the wonderful works: [ShapeLLM](https://github.com/qizekun/ShapeLLM/blob/main/docs/MODEL_ZOO.md), [LISA](https://github.com/dvlab-research/LISA), This work is built upon them.
 
 ## 🎫 License
 
