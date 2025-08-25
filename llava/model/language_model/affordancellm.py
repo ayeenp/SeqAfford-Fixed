@@ -680,7 +680,7 @@ class LisaMetaModel:
         self.point_model = modelss.create_uni3d()
         
 
-        checkpoint = torch.load("/root/autodl-tmp/model.pt", map_location="cpu")
+        checkpoint = torch.load("/data/wangxy1/models/uni3D/model.pt", map_location="cpu")
         # logging.info('loaded checkpoint {}'.format(args.ckpt_path))
         sd = checkpoint['module']
         distributed = False

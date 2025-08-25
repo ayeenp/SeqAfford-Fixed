@@ -36,6 +36,9 @@ from llava import conversation as conversation_lib
 from llava.mm_utils import tokenizer_point_token, process_pts, load_pts, occlusion, rotation
 from llava.train.aff_rea_dataset import ReasonSegDataset
 from llava.mm_utils import tokenizer_point_token
+
+from transformers import LlamaTokenizer
+
 import torch.distributed as dist
 from enum import Enum
 
@@ -675,8 +678,8 @@ def make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer,
 from torch.utils.tensorboard import SummaryWriter
 
 def train():
-    os.makedirs("/root/autodl-tmp/log_dir", exist_ok=True)
-    writer = SummaryWriter("/root/autodl-tmp/log_dir")
+    os.makedirs("/data/wangxy1/seq_afford_logs/log_dir", exist_ok=True)
+    writer = SummaryWriter("/data/wangxy1/seq_afford_logs/log_dir")
 
     global local_rank
 
@@ -713,6 +716,14 @@ def train():
         padding_side="right",
         use_fast=False,
     )
+
+    # tokenizer = LlamaTokenizer(
+    #     vocab_file='/data/wangxy1/models/shapellm_7B/tokenizer.model',
+    #     tokenizer_config='/data/wangxy1/models/shapellm_7B/tokenizer_config.json',
+    #     special_tokens_map='/data/wangxy1/models/shapellm_7B/special_tokens_map.json',
+    #     model_max_length=training_args.model_max_length,
+    #     padding_side="right",
+    # )
 
 
     tokenizer.pad_token = tokenizer.unk_token
@@ -885,8 +896,8 @@ def train():
                     if training_args.bf16 and module.weight.dtype == torch.float32:
                         module = module.to(torch.bfloat16)
 
-    data_module = make_supervised_data_module(tokenizer=tokenizer,
-                                              data_args=data_args)
+    # data_module = make_supervised_data_module(tokenizer=tokenizer,
+    #                                           data_args=data_args)
     model.resize_token_embeddings(len(tokenizer))
     # make text_hidden_fcs, mask_decoder, lm_head, embed_tokens trainable
     for n, p in model.named_parameters():
@@ -905,19 +916,19 @@ def train():
                  1,
                  samples_per_epoch=2000 * 2 * 1 * 10,
                  exclude_val=False,
-                 reason_seg_data="/root/autodl-tmp/affdata/point_train_all.txt",
+                 reason_seg_data="/data/wangxy1/datasets/seqafford/affdata/point_train_all.txt",
                  run_type = "train",
                  explanatory=-1,
-                 json_path = "/root/autodl-tmp/affdata/json_train_all.txt"
+                 json_path = "/data/wangxy1/datasets/seqafford/affdata/json_train_all.txt"
                  )
     
-    test_dataset = ReasonSegDataset( 
+    test_dataset = ReasonSegDataset(
                  1,
                  exclude_val=False,
-                 reason_seg_data="/root/autodl-tmp/affdata/point_test_all.txt",
+                 reason_seg_data="/data/wangxy1/datasets/seqafford/affdata/point_test_all.txt",
                  run_type = "test",
                  explanatory=-1,
-                 json_path = "/root/autodl-tmp/affdata/json_test_all.txt"
+                 json_path = "/data/wangxy1/datasets/seqafford/affdata/json_test_all.txt"
                  )
     print(f"Training with {len(train_dataset)} examples.")
 
@@ -975,7 +986,7 @@ def train():
 
     # resume deepspeed checkpoint
     # if training_args.auto_resume and len(training_args.resume) == 0:
-    #     resume = os.path.join("/root/autodl-tmp/log_dir", "ckpt_model")
+    #     resume = os.path.join("/data/wangxy1/seq_afford_logs/log_dir", "ckpt_model")
     #     if os.path.exists(resume):
     #         training_args.resume = resume
 
@@ -1026,11 +1037,11 @@ def train():
         best_auc = max(auc,best_auc)
 
         if is_best:
-            save_dir = os.path.join("/root/autodl-tmp/log_dir", "ckpt_model")
+            save_dir = os.path.join("/data/wangxy1/seq_afford_logs/log_dir", "ckpt_model")
             torch.save(
                     {"epoch": epoch},
                     os.path.join(
-                        "/root/autodl-tmp/log_dir",
+                        "/data/wangxy1/seq_afford_logs/log_dir",
                         "meta_log_AUC{:.3f}.pth".format(
                             best_auc
                         ),

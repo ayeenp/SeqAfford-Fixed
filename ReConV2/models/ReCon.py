@@ -97,12 +97,13 @@ class MaskTransformer(nn.Module):
         self.num_group = config.num_group
         self.num_mask = int((self.num_group - self.keep_attend) * self.mask_ratio)
 
+        print(config)
         if config.pretrained_model_name == "":
             print_log(f'[ReCon] No pretrained model is loaded.', logger='ReCon')
         elif config.pretrained_model_name in timm.list_models(pretrained=True):
-            self.encoder.blocks.load_pretrained_timm_weights()
             print_log(f'[ReCon] Timm pretrained model {config.pretrained_model_name} is successful loaded.',
                       logger='ReCon')
+            self.encoder.blocks.load_pretrained_timm_weights()
         else:
             print_log(f'[ReCon] Pretrained model {config.pretrained_model_name} is not found in Timm.', logger='ReCon')
 

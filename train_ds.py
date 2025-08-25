@@ -233,10 +233,10 @@ def main(args):
                  1,
                  samples_per_epoch=100,
                  exclude_val=False,
-                 reason_seg_data="/root/autodl-tmp/affdata/point_train_all.txt",
+                 reason_seg_data="/data/wangxy1/datasets/seqafford/affdata/point_train_all.txt",
                  run_type = "train",
                  explanatory=-1,
-                 json_path = "/root/autodl-tmp/affdata/json_train_all.txt"
+                 json_path = "/data/wangxy1/datasets/seqafford/affdata/json_train_all.txt"
                  )
 
     if args.no_eval == False:

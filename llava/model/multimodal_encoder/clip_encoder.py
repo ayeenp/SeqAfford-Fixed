@@ -21,7 +21,7 @@ class CLIPVisionTower(nn.Module):
         self.is_loaded = False
 
     def load_model(self):
-        ckpt = torch.load("/root/autodl-tmp/checkpoints/recon/large.pth", map_location='cpu')
+        ckpt = torch.load("/data/wangxy1/models/recon/best_lvis.pth", map_location='cpu')
         state_dict = {k.replace("module.", ""): v for k, v in ckpt['base_model'].items()}
         self.vision_tower.load_state_dict(state_dict, strict=True)
         self.vision_tower.requires_grad_(False)

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LLM_VERSION=/root/autodl-tmp/ShapeLLM_7B_general_v1.0
+LLM_VERSION=/data/wangxy1/models/models--qizekun--ShapeLLM_7B_general_v1.0/snapshots/3a146cc63a1d3355d1cb4105c12f7004cf41f000
 MODEL_VERSION=shapellm-7b
 PRETRAIN_TAG=v1.0
 TAG=v1.0
@@ -26,7 +26,7 @@ deepspeed llava/train/train_mem.py \
     --data_path $meta_path \
     --point_folder $pcs_path \
     --vision_tower ReConV2/cfgs/pretrain/large/openshape.yaml \
-    --vision_tower_path /root/autodl-tmp/checkpoints/recon/large.pth \
+    --vision_tower_path /data/wangxy1/models/recon/best_lvis.pth \
     --sample_points_num 10000 \
     --with_color True \
     --occlusion False \
@@ -34,14 +34,14 @@ deepspeed llava/train/train_mem.py \
     --with_ape True \
     --with_local True \
     --with_global True \
-    --pretrain_mm_mlp_adapter /root/autodl-tmp/mm_projector.bin \
+    --pretrain_mm_mlp_adapter /data/wangxy1/models/models--qizekun--ShapeLLM_7B_general_v1.0/snapshots/3a146cc63a1d3355d1cb4105c12f7004cf41f000/mm_projector.bin \
     --mm_projector_type mlp2x_gelu \
     --mm_vision_select_layer -2 \
     --mm_use_pt_start_end False \
     --mm_use_pt_patch_token False \
     --group_by_modality_length True \
     --bf16 False \
-    --output_dir ./checkpoints/$MODEL_VERSION-$type-$TAG-lora \
+    --output_dir /data/wangxy1/seq_afford_logs/checkpoints/$MODEL_VERSION-$type-$TAG-lora \
     --num_train_epochs 1 \
     --per_device_train_batch_size 16 \
     --per_device_eval_batch_size 4 \

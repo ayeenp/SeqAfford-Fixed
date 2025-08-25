@@ -161,7 +161,7 @@ class ReasonSegDataset(torch.utils.data.Dataset):
         range_ = self.object_train_split[object_name]
         point_sample_idx = random.sample(range(range_[0],range_[1]), 1)
         point_path = 'affdata/'+self.type+'/point_'+object_name+'_'+id+'.txt'
-        pa = '/root/autodl-tmp/'
+        pa = '/data/wangxy1/datasets/seqafford/'
         # for id_x in point_sample_idx:
                 # point_path = self.point_files[id_x]
         Points, affordance_label = self.extract_point_file(pa+point_path)
@@ -300,6 +300,8 @@ class ReasonSegDataset(torch.utils.data.Dataset):
                 parts = parts[-1].split('_')
                 if number_dict != None:
                     object_ = parts[-2]
+                    # if object_ == 'test' or object_ == 'train':
+                    #     continue
                     number_dict[object_] +=1
                 file_list.append(file)
 

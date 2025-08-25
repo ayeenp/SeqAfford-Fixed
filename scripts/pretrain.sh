@@ -11,7 +11,7 @@ deepspeed llava/train/train_mem.py \
     --data_path ./playground/data/shapellm/cap3d_objaverse_785k.json \
     --point_folder ./playground/data/shapellm/cap3d_pcs \
     --vision_tower ReConV2/cfgs/pretrain/large/openshape.yaml \
-    --vision_tower_path /root/autodl-tmp/checkpoints/recon/large.pth \
+    --vision_tower_path /data/wangxy1/models/recon/best_lvis.pth \
     --sample_points_num 10000 \
     --with_color True \
     --occlusion False \
