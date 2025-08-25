@@ -21,7 +21,7 @@ fi
 deepspeed \
     --master_port=29505 \
     llava/train/train_mem.py \
-    --lora_enable True --lora_r 8 --lora_alpha 16 --mm_projector_lr 2e-5 \
+    --lora_enable True --lora_r 4 --lora_alpha 16 --mm_projector_lr 2e-5 \
     --deepspeed ./scripts/zero2.json \
     --model_name_or_path $LLM_VERSION \
     --version v1 \
@@ -45,9 +45,9 @@ deepspeed \
     --bf16 False \
     --output_dir /data/wangxy1/seq_afford_logs/checkpoints/$MODEL_VERSION-$type-$TAG-lora \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 16 \
+    --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
-    --gradient_accumulation_steps 1 \
+    --gradient_accumulation_steps 2 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
     --save_steps 50000 \
