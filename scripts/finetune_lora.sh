@@ -18,7 +18,9 @@ else
     exit 1
 fi
 
-deepspeed llava/train/train_mem.py \
+deepspeed \
+    --master_port=29505 \
+    llava/train/train_mem.py \
     --lora_enable True --lora_r 8 --lora_alpha 16 --mm_projector_lr 2e-5 \
     --deepspeed ./scripts/zero2.json \
     --model_name_or_path $LLM_VERSION \
