@@ -300,8 +300,8 @@ class ReasonSegDataset(torch.utils.data.Dataset):
                 parts = parts[-1].split('_')
                 if number_dict != None:
                     object_ = parts[-2]
-                    # if object_ == 'test' or object_ == 'train':
-                    #     continue
+                    if object_ == 'test' or object_ == 'train':
+                        continue
                     number_dict[object_] +=1
                 file_list.append(file)
 
