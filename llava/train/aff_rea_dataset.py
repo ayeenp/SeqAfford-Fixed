@@ -182,7 +182,7 @@ class ReasonSegDataset(torch.utils.data.Dataset):
 
 
 
-        sents, aff_type = get_info_from_json(pa+json_path)
+        sents, aff_type = get_info_from_json(pa+'affdata/json/'+self.type+'/'+json_path[-1])
         if len(sents) >= self.num_classes_per_sample:
             sampled_inds = np.random.choice(
                 list(range(len(sents))), size=self.num_classes_per_sample, replace=False
