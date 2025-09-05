@@ -679,7 +679,14 @@ from torch.utils.tensorboard import SummaryWriter
 
 def train():
     os.makedirs("/data/wangxy1/seq_afford_logs/log_dir", exist_ok=True)
-    writer = SummaryWriter("/data/wangxy1/seq_afford_logs/log_dir")
+    
+    # Ensure all required output directories exist
+    base_log_dir = "/data/wangxy1/seq_afford_logs/log_dir"
+    ckpt_dir = os.path.join(base_log_dir, "ckpt_model")
+    os.makedirs(base_log_dir, exist_ok=True)
+    os.makedirs(ckpt_dir, exist_ok=True)
+
+    writer = SummaryWriter(base_log_dir)
 
     global local_rank
 
